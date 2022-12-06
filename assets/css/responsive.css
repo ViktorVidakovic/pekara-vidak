@@ -1,0 +1,164 @@
+@media screen and (max-width:1762px) {
+    footer h3{
+        font-size: 22px;
+    }
+    footer p,footer a{
+        font-size: 18px !important;
+    }
+}
+@media screen and (max-width:1450px) {
+    .navbar a{
+        font-size:20px;
+    }
+    .pddng{
+        padding:16px 0px !important;
+    }
+    #links i{
+        font-size: 12px;
+    }
+    .vv-fs-26{
+        font-size:24px !important;
+    }
+    .vv-fs-22{
+        font-size:20px !important;
+    }
+    #footer-social i{
+        font-size: 26px;
+    }
+    #footer-social ul a{
+        font-size:14px;
+    }
+    footer h3{
+        font-size: 18px;
+    }
+    footer p,footer a{
+        font-size: 14px !important;
+    }
+
+}
+@media screen and (max-width:1280px){
+    #desc-block p{
+        font-size: 17px;
+    }
+    h2{
+        font-size:30px;
+    }
+    #main h3{
+        font-size: 28px;
+    }
+    .vv-vh-40{
+        height: 30vh;
+    }
+    .ponuda-fs{
+        font-size: 18px;
+    }
+    #o-autoru-pic{
+        background-position:center;
+    }   
+    .vv-fs-26{
+        font-size:20px !important;
+    } 
+    .vv-fs-22{
+        font-size:18px !important;
+    } 
+}
+@media screen and (max-width:1199px){
+    .vv-fs-22{
+        font-size:22px !important;
+    }
+    .vv-cover-2{
+        background-image: url('../img/pizza-cover-xl.png');
+        background-position: center;
+    }
+    .ponuda-fs{
+        font-size: 20px;
+    }
+    #o-autoru-pic{
+        background-position:unset;
+    }    
+}
+@media screen and (max-width:1026px) {
+    #desc-block button, .carousel-block button{
+        font-size:16px;
+    }
+    #desc-block p{
+        font-size: 20px;
+    }
+    h1{
+        font-size: 26px;
+    }
+    .reserve button{
+        font-size: 18px;
+    }
+}
+@media screen and (max-width:850px) {
+    #o-autoru-pic{
+        background-position:top;
+    }
+    .vv-h-580{
+        height: 400px;
+    }    
+}
+@media screen and (max-width:720px) {
+    .vv-cover-2{
+        background-image: url('../img/pizza-cover-lg.png');
+    }
+    .vv-vh-100{
+        height: 95vh !important;
+    }
+    .vv-welcome{
+        height: 600px;
+    }
+}
+@media screen and (max-width:605px) {
+    #desc-block p{
+        font-size: 16px;
+    }
+    .vv-vh-40{
+        height: 25vh;
+    }
+    .reserve button{
+        font-size: 15px;
+    }
+    .vv-cover-1{
+        background-position: top center;        
+    }
+    .vv-vh-100{
+        height: 85vh !important;
+    }
+    .vv-welcome{
+        height: 550px;
+    }
+}
+@media screen and (max-width:410px) {
+    #desc-block p{
+        font-size: 14px;
+    }
+    #desc-block button{
+        font-size: 12px;
+    }
+    .vv-cover-2{
+        background-image: url('../img/pizza-cover-md.png');
+    }
+    .vv-welcome{
+        height: 450px;
+    }
+    .vv-vh-100{
+        height: 70vh !important;
+    }
+    .vv-h-450{
+        height: 320px;
+    }
+    .vv-h-320{
+        height: 190px !important;
+    }
+    .vv-h-580{
+        height: 320px;
+    } 
+    .vv-fs-26{
+        font-size: 20px !important;
+    } 
+    .vv-fs-22{
+        font-size: 16px !important;
+    }
+}

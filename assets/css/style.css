@@ -1,0 +1,445 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+:root{
+    --menu-color: #DC8145;
+    --h1-color: #DB7D45;
+    --drop-shadow:rgba(0,0,0,.25); 
+    --drop-shadow-lite:rgba(0,0,0,.05); 
+    --font-color: #e6e6e6;
+    --dark-font-color: #35383C;
+    --navbar-a-active:#F3F3F3;
+    --vv-cover-block:rgba(0,0,0,.65);
+    --footer-background:#B97447;
+    --footer-blocks:rgba(0,0,0,.50);
+    --back-color:#F1EEEB;
+    --str-back-color:#DAE6F3;
+    --footer-bottom:#303132;
+    --underline-color:#A15E35;
+    --headers-color:#2D3033;
+    --desc-color:#F9F9F9;
+    --border: #949494;
+}
+*{
+    scroll-behavior:smooth;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    box-sizing:border-box;
+}
+body{
+    font-family: 'Raleway', sans-serif;
+    background-color: var(--back-color);
+}
+h1{
+    font-size: 40px;
+    color: var(--h1-color);
+    font-weight: 700;
+}
+h2{
+    font-size:38px;
+    font-weight: 700;
+}
+p{
+    margin-bottom: 0px;
+}
+#desc-block p{
+    font-size: 26px;
+}
+.vv-br-025{
+    border-radius: 0.25rem;
+    border:none;
+}
+button{
+    transition: .7s;
+}
+a{
+    font-family: 'Raleway', sans-serif;
+    transition-duration:.7s;
+}
+a:hover{
+    text-decoration: none;
+    color:var(--navbar-a-active);
+    transition-duration:.7s;
+    text-shadow: 0px 0px 5px var(--drop-shadow);
+
+}
+a,p,.vv-welcome, #desc-block p,h2,h3{
+    color: var(--font-color);
+}
+.navbar a{
+    font-size:25px;
+    transition-duration:.7s;
+}
+.navbar a:hover{
+    color:var(--navbar-a-active);
+    transition-duration:.7s;
+    text-shadow: 0px 0px 50px var(--drop-shadow);
+}
+.active a{
+    color:var(--navbar-a-active) !important;
+}
+.navbar-brand{
+    transition-duration:.7s;
+}
+.navbar-brand:hover{
+    filter: opacity(60%);
+    transition-duration:.7s;
+}
+.vv-fs-26{
+    font-size: 26px;
+}
+.vv-fs-24{
+    font-size:24px;
+}
+.vv-fs-22{
+    font-size: 22px;
+}
+#carousel{
+    overflow-y: hidden;
+}
+.vv-navbar{
+    background-color: var(--menu-color);
+    height: 95px !important;
+    z-index: 4 !important;
+    padding: 0 !important;
+}
+.vv-bg-white{
+    background-color: #E9E9E9;
+    border-top: 3px var(--border) solid;
+}
+.vv-btn-grey{
+    background-color: #82898f;
+    transition: .7s;
+}
+.vv-btn-grey:hover{
+    background-color: #d6d6d6;
+    transition: .7s;
+    color: var(--headers-color);
+}
+.vv-header-color{
+    color: var(--underline-color);
+}
+.vv-h3{
+    color: var(--headers-color) !important;
+    font-weight: 700;
+}
+.vv-mr-10{
+    margin-right: 10%;
+}
+.vv-top-35{
+    top:35%;
+}
+.vv-welcome button{
+    border: 2.5px var(--font-color) solid !important;
+}
+.vv-crna-slova{
+    color:var(--dark-font-color);
+}
+.vv-narandzasta-slova{
+    color:var(--underline-color);
+}
+.vv-fw-700{
+    font-weight: 700;
+}
+.vv-narandzasta-slova:hover{
+    color:var(--dark-font-color);
+    transition-duration:.7s;
+}
+main{
+    background-color: var(--back-color);
+    box-shadow: inset 0px 0px 92px 24px var(--drop-shadow);
+}
+main h3{
+    color:var(--str-back-color);
+    margin-bottom: 3px;
+    font-size:32px;
+}
+#desc-block{
+    box-shadow: 0px 0px 30px 5px var(--drop-shadow-lite);
+    font-size: 20px;
+}
+.vv-desc-block{
+    background-color: #B9703F;
+}
+#desc-block button{
+    border: 2.5px var(--font-color) solid;
+}
+#desc-block button:hover, .vv-welcome button:hover{
+    box-shadow: 0px 0px 10px 3px var(--navbar-a-active);
+}
+.vv-welcome button, #desc-block button{
+    border-radius: 0px !important; 
+}
+.vv-btn{
+    background-color: #B56C3B;
+    color:#DAE6F3;
+}
+.vv-br-7{
+    border-radius: 7px var(--dark-font-color) solid;
+}
+.btn-lg{
+    border: none;
+}
+.fa-bread-slice,.fa-pizza-slice{
+    font-size: 60px;
+    color: var(--dark-font-color);
+}
+.line{
+    width: 60px;
+    height: 2.5px;
+    background-color: var(--underline-color);
+}
+.vv-px-80{
+    padding: 0px 80px !important;
+}
+.vv-pt-60{
+    padding-top: 60px !important;
+}
+.vv-bg-color-0{
+    background-color:rgba(255,2555,255,0);
+}
+.vv-ta-left{
+    text-align: left !important;
+}
+.vv-ta-right{
+    text-align: right !important;
+}
+.vv-b-grey-double{
+    border: 8px #949494 double;
+}
+.vv-b-orange-double{
+    border: 8px var(--h1-color) double;
+}
+.vv-fs-19{
+    font-size: 19px;
+}
+#spremanje,#misija,#vizija{
+    transition-duration:.7s;
+}
+footer{
+    background-color: var(--footer-background);
+}
+footer h3{
+    font-size: 26px;
+    color: var(--navbar-a-active);
+}
+footer a{
+    font-size: 22px;
+    transition-duration: .7s;
+}
+footer p{
+    font-size: 22px;
+}
+footer a:hover{
+    color:#ffffff;
+    transition-duration: .7s;
+    text-shadow: 0px 0px 50px var(--drop-shadow);
+}
+footer .nav-link{
+    padding:0px;
+}
+#footer-links{
+    background-color:var(--footer-blocks);
+}
+#links i{
+    font-size: 16px;
+}
+#files i{
+    font-size: 16px;
+}
+#footer-social i{
+    font-size: 42px;
+}
+.position-absolute{
+    z-index: 10 !important;
+}
+.desc{
+    background-color: var(--desc-color);
+    transition: 1s;
+}
+.desc:hover{
+    box-shadow: 0px 0px 30px 1px var(--drop-shadow);
+    transition: .7s;
+}
+.desc-btn{
+    transition: 1s;
+}
+.desc-btn:hover{
+    box-shadow: 0px 0px 25px 10px var(--drop-shadow);
+    transition: .7s;
+}
+.price{
+    background-color: var(--font-color);
+}
+.tx-b{
+    color:var(--dark-font-color);
+}
+.vv-br-0{
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -ms-border-radius: 0px;
+    -o-border-radius: 0px;
+}
+#bottom{
+    background-color: var(--footer-bottom);
+}
+.vv-z-index{
+    z-index: 9 !important;
+}
+.vv-header-bg{
+    background-color: var(--menu-color) !important;
+}
+.vv-cover-block{
+    background-color: var(--vv-cover-block) !important;   
+}
+.vv-header-bg-2{
+    background-color: var(--menu-color);
+}
+.vv-vh-100{
+    height: 100vh !important;
+}
+.vv-vh-88{
+    height: 88vh !important;
+}
+.vv-vh-25{
+    height: 25vh;
+}
+.vv-cover-1{
+    background-image: url('../img/cover-pocetna.jpg');
+    background-repeat: no-repeat;
+    opacity: 0.35;
+}
+.vv-cover-2{
+    background-image: url('../img/pizza-cover.png');
+    background-repeat: no-repeat;
+}
+.vv-welcome{
+    width: 100%;
+    height: 800px;
+}
+.vv-welcome-message{
+    width: 35%;
+}
+.ponuda-btn{
+    border-top: 3px var(--border) solid;
+}
+.vv-z-index-min{
+    z-index: 2 !important;
+}
+.vv-fa-block{
+    border: 3px var(--dark-font-color) solid;
+    border-radius: 7px;
+    padding: 15px 32px;
+}
+.vv-bg-image{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.vv-h-450{
+    height: 450px;
+}
+.vv-h-580{
+    height: 580px;
+}
+.vv-h-320{
+    height: 320px;
+}
+#spremanje-pic{
+    background-image: url('../img/pravljenje.png');
+}
+#misija-pic{
+    background-image: url('../img/misija.png');
+}
+#vizija-pic{
+    background-image: url('../img/vizija.png');
+}
+.ponuda-cover{
+    background-image:url('../img/ponuda-cover.png');
+}
+#pecivo1-pic{
+    background-image:url('../img/krofne.png');
+}
+#pecivo2-pic{
+    background-image:url('../img/mini-pice.png');
+}
+#pecivo3-pic{
+    background-image:url('../img/kiflice.png');
+}
+#pecivo4-pic{
+    background-image:url('../img/hleb.png');
+}
+#pizza1-pic{
+    background-image:url('../img/margarita.png');
+}
+#pizza2-pic{
+    background-image:url('../img/capriciosa.png');
+}
+#pizza3-pic{
+    background-image:url('../img/quattro-stagioni.png');
+}
+#pizza4-pic{
+    background-image:url('../img/vegeteriana.png');
+}
+#o-autoru-pic{
+    background-image:url('../img/o-autoru.png');
+    background-position:unset;
+}
+#gif{
+    background-image: url('../img/pic.gif');
+    height: 450px;
+}
+#kontakt-sekcija{
+    background-color: #ffffff;
+    border: #adadad 10px groove;
+}
+.bg-orange{
+    background-color: #db7d45;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 0 3px 3px 0;
+}
+.prev {
+    left: 1;
+    border-radius: 3px 0 0 3px;
+}
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+.fade {
+    animation-name: fade;
+    animation-duration: 3s;
+}
+
+@keyframes fade {
+    from {opacity: .7}
+    to {opacity: 1}
+}

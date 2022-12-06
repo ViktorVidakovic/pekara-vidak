@@ -1,0 +1,4 @@
+User-agent:*
+Disallow:/admin/
+
+Sitemap: https://viktorvidakovic.github.io/pekara-vidak/sitemap.xml
