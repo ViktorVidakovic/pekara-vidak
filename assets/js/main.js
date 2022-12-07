@@ -312,7 +312,6 @@ var formaIdIA = ["imePrezime","adresa"];
 var labelTekstIA = ["Ime i prezime:","Adresa:"];
 var placeholderiIA = ["Marko Marković","Zdravka Čelara 16"];
 var ispisPoljeFormIA = "";
-
 for(let i=0;i<poljeFormaIdIA.length;i++)
 {
   ispisPoljeFormIA += `<div id="${poljeFormaIdIA[i]}" class="form-group row px-4">
@@ -337,7 +336,6 @@ for(let i=0;i<poljeFormaIdGP.length;i++){
                       </div>`;
 }
 kontaktForma.innerHTML += ispisGrupaForme;
-
 
 var poljeFormaIdGP2 = ["poljeGrad2","poljePosBroj2"];
 var formaIdGP2 = ["grad2","posBroj2"];
@@ -400,7 +398,7 @@ var oAutoruDescSvojstva = document.getElementById("oAutoruDescSvojstva");
 
 var oAutoruTekst = [
   "Zovem se Viktor Vidaković. Nedavno sam završio tehničku školu „Mileta Nikolić“ u Aranđelovcu. Počeo sam da studiram informacione tehnologije i veb programiranje na Visokoj školi ICT.",
-  "Programiranje mi je od početka bilo veoma fascinantno, jer imamo mogućnost da kreiramo mnogo solucija i programa kako bismo nekome olakšali život. Rekao bih da moram mnogo da istražujem da bih bio spreman za veće izazove, ali se nadam da ću u budućnosti naučiti mnogo toga."
+  "Programiranje mi je od početka bilo veoma zanimljivo zato što imamo mogućnost da kreiramo solucije i programe koji će nekome olakšati život. Moram mnogo da naučim da bih bio spreman za veće izazove, ali se nadam da ću u budućnosti biti spreman."
 ];
 var ispisOAutoru = "";
 
@@ -412,100 +410,60 @@ oAutoruDescSvojstva.innerHTML = ispisOAutoru;
 //#endregion
 
 //#region Kreiranje footer-a u HTML-u
-
-
-//STIGAO SAM DO OVDE
-var linksFooterUl = document.getElementById("linksFooterUl");
-
 var linksFooterAHref = ["#","#o-nama","#u-ponudi","#kontakt","#o-autoru"];
 var linksFooterAText = ["Početna","O nama","U ponudi","Kontakt","O autoru"];
-for(let i=0;i<linksFooterAHref.length;i++)
-{
-  var linksFooterLi = document.createElement("li");
-  linksFooterLi.setAttribute("class","nav-item");
-  linksFooterUl.appendChild(linksFooterLi);
-
-  var linksFooterA = document.createElement("a");
-  linksFooterA.setAttribute("class","nav-link d-flex align-items-center");
-  linksFooterA.href = (`${linksFooterAHref[i]}`);
-  linksFooterLi.appendChild(linksFooterA);
-
-  var linksFooterAI = document.createElement("i");
-  linksFooterAI.setAttribute("class","fas fa-angle-right pr-1");
-  linksFooterA.appendChild(linksFooterAI);
-
-  var linksFooterAP = document.createElement("p");
-  linksFooterA.appendChild(linksFooterAP);
-
-  var linksFooterAPTekst = document.createTextNode(`${linksFooterAText[i]}`);
-  linksFooterAP.appendChild(linksFooterAPTekst);
+var linksFooterUl = document.querySelector("#linksFooterUl");
+var ispisLinksFooter = "";
+for(let i=0;i<linksFooterAHref.length;i++){
+  ispisLinksFooter += `<li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="${linksFooterAHref[i]}">
+                          <i class="fas fa-angle-right pr-1" aria-hidden="true"></i>
+                          <p>${linksFooterAText[i]}</p>
+                        </a>
+                      </li>`;
 }
-
-var filesFooterUl = document.getElementById("filesFooterUl");
+linksFooterUl.innerHTML = ispisLinksFooter;
 
 var filesFooterAHref = ["assets/js/main.js","assets/css/style.css","assets/css/responsive.css","sitemap.xml","robots.txt","dokumentacija.pdf"];
 var filesFooterATekstovi = ["JavaScript","CSS","Responsive","Sitemap","Robots.txt","Dokumentacija"];
-for(let i=0;i<filesFooterAHref.length;i++)
-{
-  var filesFooterLi = document.createElement("li");
-  filesFooterLi.setAttribute("class","nav-item");
-  filesFooterUl.appendChild(filesFooterLi);
+var filesFooterUl = document.querySelector("#filesFooterUl");
+var ispisFilesFooter = "";
 
-  var filesFooterA = document.createElement("a");
-  filesFooterA.setAttribute("class","nav-link d-flex align-items-center");
-  filesFooterA.href = (`${filesFooterAHref[i]}`);
-  filesFooterA.target = "_blank";
-  filesFooterLi.appendChild(filesFooterA);
-
-  var filesFooterAI = document.createElement("i");
-  filesFooterAI.setAttribute("class","fas fa-angle-right pr-1");
-  filesFooterA.appendChild(filesFooterAI);
-
-  var filesFooterAP = document.createElement("p");
-  filesFooterA.appendChild(filesFooterAP);
-
-  var filesFooterAPTekst = document.createTextNode(`${filesFooterATekstovi[i]}`);
-  filesFooterAP.appendChild(filesFooterAPTekst);
+for(let i=0;i<filesFooterAHref.length;i++){
+  ispisFilesFooter +=`<li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="${filesFooterAHref[i]}" target="_blank">
+                          <i class="fas fa-angle-right pr-1" aria-hidden="true"></i>
+                          <p>${filesFooterATekstovi[i]}</p>
+                        </a>
+                      </li>`;
 }
+filesFooterUl.innerHTML = ispisFilesFooter;
 
-var footerInfoUl = document.getElementById("footerInfoUl");
-
-var footerInfoPTekstovi = ["+381 62 232 32 32","Zdravka Čelara 16","viktor\u002evidakovic\u002e15\u002e20\u0040ict\u002eedu\u002ers"];
-for(let i=0;i<footerInfoPTekstovi.length;i++)
-{
-  var footerInfoLi = document.createElement("li");
-  footerInfoLi.setAttribute("class","nav-item");
-  footerInfoUl.appendChild(footerInfoLi);
-  var footerInfoLiP = document.createElement("p");
-  footerInfoLiP.setAttribute("id",`info-${i+1}`);
-  var footerInfoLiPTekst = document.createTextNode(`${footerInfoPTekstovi[i]}`);
-  footerInfoLiP.appendChild(footerInfoLiPTekst);
-  footerInfoLi.appendChild(footerInfoLiP);
+var footerInfoUl = document.querySelector("#footerInfoUl");
+var footerInfoPTekstovi = ["+381 62 232 32 32","Zdravka Čelara 16","viktor&#46;vidakovic&#46;15&#46;20&#64;ict&#46;edu&#46;rs"];
+var footerInfoAHref = ["tel:+381622323232",
+                      "https://www.google.com/maps/place/Zdravka+%C4%8Celara+16,+Beograd+11000/@44.8147698,20.4825022,17z/data=!3m1!4b1!4m5!3m4!1s0x475a7a95dfdba1fb:0x7dd3ed9b437a11d6!8m2!3d44.8147698!4d20.4846909",
+                      "mailto:viktor.vidakovic.15.20@ict.edu.rs"];
+var ispisInfoFooter = "";
+for(let i=0;i<footerInfoPTekstovi.length;i++){
+  ispisInfoFooter += `<li class="nav-item">
+                        <a href="${footerInfoAHref[i]}" id="info-${i+1}" target="_blank">${footerInfoPTekstovi[i]}</a>
+                      </li>`;
 }
+footerInfoUl.innerHTML = ispisInfoFooter;
 
-var footerSocialUl = document.getElementById("footerSocialUl");
-
+var footerSocialUl = document.querySelector("#footerSocialUl");
 var footerSocialIKlase = ["instagram","facebook-square","youtube"];
 var footerSocialPTekstovi = ["pekara_vidak","Pekar Vidak","Pekara Vidak"];
 var footerSocialAHref = ["instagram.com/pekara_vidak/","facebook.com/channel/PekaraVidak/","youtube.com/c/pekara_vidak/"];
-for(let i=0;i<footerSocialPTekstovi.length;i++)
-{
-  var footerSocialLi = document.createElement("li");
-  footerSocialLi.setAttribute("class","nav-item mt-2 h-47");
-  footerSocialUl.appendChild(footerSocialLi);
-
-  var footerSocialA = document.createElement("a");
-  footerSocialA.setAttribute("class","nav-link d-flex align-items-center");
-  footerSocialA.target = ("_blank");
-  footerSocialA.href = (`https://www.${footerSocialAHref[i]}`);
-  footerSocialLi.appendChild(footerSocialA);
-
-  var footerSocialAI = document.createElement("i");
-  footerSocialAI.setAttribute("class",`fab fa-${footerSocialIKlase[i]} pr-2`);
-  footerSocialA.appendChild(footerSocialAI);
-  var footerSocialATekst = document.createTextNode(`${footerSocialPTekstovi[i]}`);
-  footerSocialA.appendChild(footerSocialATekst);
+var ispisSocialFooter = "";
+for(let i=0;i<footerSocialPTekstovi.length;i++){
+  ispisSocialFooter += `<li class="nav-item mt-2 h-47">
+                          <a class="nav-link d-flex align-items-center" target="_blank" href="https:/www.${footerSocialAHref[i]}">
+                          <i class="fab fa-${footerSocialIKlase[i]} pr-2" aria-hidden="true"></i>${footerSocialPTekstovi[i]}</a>
+                        </li>`;
 }
+footerSocialUl.innerHTML = ispisSocialFooter;
 //#endregion
 
 //#region Dropdown - Poruci dugme
