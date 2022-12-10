@@ -102,6 +102,10 @@ a,p,.vv-welcome, #desc-block p,h2,h3{
     z-index: 4 !important;
     padding: 0 !important;
 }
+.vv-white14{
+    color: #E9E9E9;
+    font-size: 14px;
+}
 .vv-bg-white{
     background-color: #E9E9E9;
     border-top: 3px var(--border) solid;

@@ -3,142 +3,108 @@ console.log("Provera");
 function provera(){
   var brojGresaka = 0;
 
-  var imePrezime;
-  var vrImePrezime;
-  imePrezime = document.querySelector("#imePrezime");
-  vrImePrezime = imePrezime.value;
+  var imePrezime = document.querySelector("#imePrezime");
+  var valImePrezime = imePrezime.value;
+  var pImePrezime = document.querySelector("#pImePrezime");
 
-  var adresa;
-  var vrAdresa;
-  adresa = document.querySelector("#adresa");
-  vrAdresa = adresa.value;
+  var adresa = document.querySelector("#adresa");
+  var valAdresa = adresa.value;
+  var pAdresa = document.querySelector("#pAdresa");
 
-  var grad;
-  var grad2;
-  var vrGrad;
-  var vrGrad2;
-  grad = document.querySelector("#grad");
-  grad2 = document.querySelector("#grad2");
-  vrGrad = grad.value;
-  vrGrad2 = grad2.value;
+  var grad = document.querySelector("#grad");
+  var valGrad = grad.value;
+  var pGrad = document.querySelector("#pGrad");
 
-  var posBroj;
-  var posBroj2;
-  var vrPosBroj;
-  var vrPosBroj2;
-  posBroj = document.querySelector("#posBroj");
-  posBroj2 = document.querySelector("#posBroj2");
-  vrPosBroj = posBroj.value;
-  vrPosBroj2 = posBroj2.value;
+  var posBroj = document.querySelector("#posBroj");
+  var valPosBroj = posBroj.value;
+  var pPosBroj = document.querySelector("#pPosBroj");
 
-  var ponuda;
-  ponuda = document.querySelector("#ponuda");
+  var telefon = document.querySelector("#telefon");
+  var valTelefon = telefon.value;
+  var pTelefon = document.querySelector("#pTelefon");
 
-  var nacinPreuzimanja;
-  nacinPreuzimanja=document.getElementsByName("nacinPreuzimanja");
+  var ponuda = document.querySelector("#ponuda");
+  var pPonuda = document.querySelector("#pPonuda");
 
+  var nacinPreuzimanja=document.getElementsByName("nacinPreuzimanja");
+  var pPreuzimanje = document.querySelector("#pPreuzimanje");
+
+  var novaPonuda = document.querySelector("#novaPonuda");
+  var valNovaPonuda = novaPonuda.val;
   //Provera imena i prezimena
-  let regImePrezime=/^[A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15}\s[A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15}$/;
-  if(!(regImePrezime.test(vrImePrezime))){
-    document.querySelector("#poljeImePrezime > p").innerHTML = "Pogrešno uneto ime i prezime";
-    document.querySelector("#poljeImePrezime > p").style.color = "white";
-    document.querySelector("#poljeImePrezime > p").style.fontSize = "14px";
+  let regImePrezime=/^[A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15}(\s[A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15})+$/;
+  if(!(regImePrezime.test(valImePrezime))){
+    pImePrezime.removeAttribute("class");
     brojGresaka++;
+  }else{
+    pImePrezime.setAttribute("class","d-none");
   }
-  else{
-    document.querySelector("#poljeImePrezime > p").innerHTML=" ";
-  }
-
   //Provera adrese
-  let regAdresa=/^[A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15}\s[0-9]{1,4}$/;
-  let regAdresa2=/^[A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15}\s[A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15}\s[0-9]{1,4}$/;
-  if((regAdresa.test(vrAdresa)) || (regAdresa2.test(vrAdresa))){
-    document.querySelector("#poljeAdresa > p").innerHTML=" ";
-  }
-  else{
-    document.querySelector("#poljeAdresa > p").innerHTML = "Pogrešno uneta adresa";
-    document.querySelector("#poljeAdresa > p").style.color = "white";
-    document.querySelector("#poljeAdresa > p").style.fontSize = "14px";
+  let regAdresa=/^([A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15}\s)+[0-9]{1,4}$/;
+  if(!(regAdresa.test(valAdresa))){
+    pAdresa.removeAttribute("class");
     brojGresaka++;
   }
-
-
+  else{
+    pAdresa.setAttribute("class","d-none");
+  }
   //Provera grada
-  let regGrad=/^[A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15}$/;
-  let regGrad2=/^[A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15}\s[A-ZČĆŠĐŽ]{0,1}[a-zčćšđž]{2,15}$/;
-  if((regGrad.test(vrGrad)) || (regGrad2.test(vrGrad)) || (regGrad.test(vrGrad2)) || (regGrad2.test(vrGrad2))){
-    document.querySelector("#poljeGrad > p").innerHTML=" ";
-    document.querySelector("#poljeGrad2 > p").innerHTML=" ";
+  let regGrad=/^[A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15}(\s[A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15})*$/;
+  if(!(regGrad.test(valGrad))){
+    pGrad.removeAttribute("class");
+    brojGresaka++;
   }
   else{
-    document.querySelector("#poljeGrad > p").innerHTML = "Pogrešno unet grad";
-    document.querySelector("#poljeGrad > p").style.color = "white";
-    document.querySelector("#poljeGrad > p").style.fontSize = "14px";
-    brojGresaka++;
-    document.querySelector("#poljeGrad2 > p").innerHTML = "Pogrešno unet grad";
-    document.querySelector("#poljeGrad2 > p").style.color = "white";
-    document.querySelector("#poljeGrad2 > p").style.fontSize = "14px";
-    brojGresaka++;
+    pGrad.setAttribute("class","d-none");
   }
-
-
   //Provera postanskog broja
   let regPosBroj=/^[0-9]{5}$/;
-  if((regPosBroj.test(vrPosBroj)) || (regPosBroj.test(vrPosBroj2))){
-    document.querySelector("#poljePosBroj > p").innerHTML = "";
-    document.querySelector("#poljePosBroj2 > p").innerHTML = "";
+  if(!(regPosBroj.test(valPosBroj))){
+    pPosBroj.removeAttribute("class");
+    brojGresaka++;
   }
   else{
-    document.querySelector("#poljePosBroj > p").innerHTML = "Pogrešno unet poš. broj";
-    document.querySelector("#poljePosBroj > p").style.color = "white";
-    document.querySelector("#poljePosBroj > p").style.fontSize = "14px";
-    brojGresaka++;
-    document.querySelector("#poljePosBroj2 > p").innerHTML = "Pogrešno unet poš. broj";
-    document.querySelector("#poljePosBroj2 > p").style.color = "white";
-    document.querySelector("#poljePosBroj2 > p").style.fontSize = "14px";
+    pPosBroj.setAttribute("class","d-none");
+  }
+  //Provera broja telefona
+  let regTelefon=/^\d{9,10}$/;
+  if(!(regTelefon.test(valTelefon))){
+    pTelefon.removeAttribute("class");
     brojGresaka++;
   }
-
-  
+  else{
+    pTelefon.setAttribute("class","d-none");
+  }
   //Provera padajuce liste
   if(ponuda.options[ponuda.options.selectedIndex].value=="0"){
-    document.querySelector("#izbor > p").innerHTML="Morate izabrati proizvod";
-    document.querySelector("#izbor > p").style.color="white";
-    document.querySelector("#izbor > p").style.fontSize = "14px";
+    pPonuda.removeAttribute("class");
     brojGresaka++;
   }
   else{
-    document.querySelector("#izbor > p").innerHTML = "";
+    pPonuda.setAttribute("class","d-none");
   }
-
   //Provera radio button-a
-  var vrNacinPreuzimanja=" ";
+  var vrNacinPreuzimanja="";
   for(let i=0;i<nacinPreuzimanja.length;i++){
     if(nacinPreuzimanja[i].checked){
       vrNacinPreuzimanja=nacinPreuzimanja[i].value;
       break;
     }
   }
-  if(vrNacinPreuzimanja==" "){
-    document.querySelector("#nacinPreuzimanja > div > p").innerHTML="Morate izabrati nacin isporuke";
-    document.querySelector("#nacinPreuzimanja > div > p").style.color="white";
-    document.querySelector("#nacinPreuzimanja > div > p").style.fontSize = "14px";
+  if(vrNacinPreuzimanja==""){
+    pPreuzimanje.removeAttribute("class");
     brojGresaka++;
   }
   else{
-    document.querySelector("#nacinPreuzimanja > div > p").innerHTML="";
+    pPreuzimanje.setAttribute("class","d-none");
   }
-  
   var alertIspis = "";
-  if(novaPonudaInput.checked){
+  if(novaPonuda.checked){
     alertIspis = "Hvala Vam što ste se prijavili na naš newsletter!";
   }
-
-  $(document).ready(function(){
-    if(brojGresaka==0){
-      alert("Uspešno ste izvršili porudžbinu.\n" + `${alertIspis}`);
-    }
-  });
+  if(brojGresaka==0){
+    alert("Uspešno ste izvršili porudžbinu.\n" + `${alertIspis}`);
+  }
 }
 //#endregion
 
@@ -307,47 +273,22 @@ uPonudiPizzaSvojstva.innerHTML = ispisPonudaPizza;
 
 //#region Kontakt
 var kontaktForma = document.getElementById("kontaktForma");
-var poljeFormaIdIA = ["poljeImePrezime","poljeAdresa"];
-var formaIdIA = ["imePrezime","adresa"];
-var labelTekstIA = ["Ime i prezime:","Adresa:"];
-var placeholderiIA = ["Marko Marković","Zdravka Čelara 16"];
-var ispisPoljeFormIA = "";
-for(let i=0;i<poljeFormaIdIA.length;i++)
+var poljeFormaIdIAGP = ["poljeImePrezime","poljeAdresa","poljeGrad","poljePosBroj","poljeTelefon"];
+var formaIdIAGP = ["imePrezime","adresa","grad","posBroj","telefon"];
+var labelTekstIAGP = ["Ime i prezime","Adresa","Grad","Poštanski broj","Broj telefona"];
+var placeholderiIAGP = ["Marko Marković","Zdravka Čelara 16","Beograd","11060", "062323232"];
+var ispisPoljeFormIAGP = "";
+var pIdIAGP = ["pImePrezime","pAdresa","pGrad","pPosBroj","pTelefon"];
+var tekstPoljeIAGP = ["Pogrešno uneto ime i prezime, početno slovo mora biti veliko.","Pogrešno uneta adresa, unesite naziv ulice i broj.","Pogrešno unet grad, početno slovo mora biti veliko.","Pogrešno uneto, poštanski broj mora imati 5 cifara", "Pogrešno unet  broj telefona. Morate uneti 9 ili 10 cifara."];
+for(let i=0;i<poljeFormaIdIAGP.length;i++)
 {
-  ispisPoljeFormIA += `<div id="${poljeFormaIdIA[i]}" class="form-group row px-4">
-                          <label class="col-12 px-0" for="${formaIdIA[i]}">${labelTekstIA[i]}</label>
-                          <input id="${formaIdIA[i]}" class="col-12 py-1 vv-br-025" type="text" name="${formaIdIA[i]}" placeholder="${placeholderiIA[i]}">
-                          <p></p>
+  ispisPoljeFormIAGP += `<div id="${poljeFormaIdIAGP[i]}" class="form-group row px-4">
+                          <label class="col-12 px-0" for="${formaIdIAGP[i]}">${labelTekstIAGP[i]}:</label>
+                          <input id="${formaIdIAGP[i]}" class="col-12 py-1 vv-br-025" type="text" name="${formaIdIAGP[i]}" placeholder="${placeholderiIAGP[i]}">
+                          <p id="${pIdIAGP[i]}" class="d-none">${tekstPoljeIAGP[i]}<p/>
                         </div>`;
 }
-kontaktForma.innerHTML = ispisPoljeFormIA;
-
-var poljeFormaIdGP = ["poljeGrad","poljePosBroj"];
-var formaIdGP = ["grad","posBroj"];
-var labelTekstGP = ["Grad","Poš. broj"];
-var placeholderiGP = ["Beograd","11060"];
-var ispisGrupaForme = `<div class="form-group row px-2 d-sm-flex d-none">`;
-for(let i=0;i<poljeFormaIdGP.length;i++){
-  ispisGrupaForme += `<div id="${poljeFormaIdGP[i]}" class="col-6">
-                        <label class="px-0 py-0 my-0 mb-1" for="${formaIdGP[i]}">${labelTekstGP[i]}:</label>
-                        <br>
-                        <input id="${formaIdGP[i]}" class="py-1 px-2 vv-br-025" type="text" name="${formaIdGP[i]}" placeholder="${placeholderiGP[i]}">
-                        <p></p>
-                      </div>`;
-}
-kontaktForma.innerHTML += ispisGrupaForme;
-
-var poljeFormaIdGP2 = ["poljeGrad2","poljePosBroj2"];
-var formaIdGP2 = ["grad2","posBroj2"];
-var ispisPoljeGP2 = "";
-for(let i=0; i<poljeFormaIdGP2.length;i++){
-  ispisPoljeGP2 += `<div id="${poljeFormaIdGP2[i]}" class="col-12 px-2 d-sm-none d-block mb-3 form-group row px-0 mx-0">
-                      <label class="col-12 px-0" for="${formaIdGP2[i]}">${labelTekstGP[i]}:</label>
-                      <input id="${formaIdGP2[i]}" class="col-12 py-1 vv-br-025" type="text" name="${formaIdGP2[i]}" placeholder="${placeholderiGP[i]}">
-                      <p></p>
-                    </div>`;
-}
-kontaktForma.innerHTML += ispisPoljeGP2;
+kontaktForma.innerHTML = ispisPoljeFormIAGP;
 
 var opcije = ["kr","mi","ki","hl","ma","ca","qu","ve"];
 var opcijeTekst = ["Krofne","Mini-pice","Kiflice sa viršlama","Hleb","Margarita","Capriciosa","Quattro Stagioni","Vegeteriana"];
@@ -359,7 +300,7 @@ for(i=0; i<opcije.length;i++){
   ispisIzbor += `<option id="${opcije[i]}" value="${opcije[i]}">${opcijeTekst[i]}</option>`;
 }
 ispisIzbor += `</select>
-            <p></p>
+            <p id="pPonuda" class="vv-white14 d-none">Morate izabrati neki od proizvoda.</p>
           </div>`;
 kontaktForma.innerHTML += ispisIzbor;
 
@@ -375,7 +316,7 @@ for(let i=0; i<preuzimanjaId.length; i++){
                       </div>`;
 }
 ispisPreuzimanje += `<div class="col-12 row ml-3">
-                  <p class="col-12"></p>
+                  <p id="pPreuzimanje" class="col-12 vv-white14 d-none">Morate izabrati neku od opcija preuzimanja.</p>
                 </div>
               </div>`;
 kontaktForma.innerHTML += ispisPreuzimanje;
@@ -387,10 +328,11 @@ var ispisNovaPonuda = `<div class="form-group row px-0">
                           <label class="form-check-label" for="novaPonuda">Želim da budem obavešten o novim proizvodima i akcijama.</label>
                         </div>
                       </div>
-                      <div onclick="provera()" class="form-group d-flex justify-content-center">
+                      <div class="form-group d-flex justify-content-center">
                         <input id="btnPosalji" class="btn vv-br-025 vv-btn-grey" type="button" value="Pošalji"/>
                       </div>`;
 kontaktForma.innerHTML += ispisNovaPonuda;
+document.querySelector("#btnPosalji").addEventListener("click",provera);
 //#endregion
 
 //#region O autoru
@@ -479,7 +421,7 @@ var nizPonuda = ["kr","mi","ki","hl","ma","ca","qu","ve"];
 function poruci(string){
   for(let i = 0; i<nizPonuda.length;i++){
     let poruciProizvod = document.getElementById(`${nizPonuda[i]}`);
-    poruciProizvod.removeAttribute("selected", "");
+    poruciProizvod.removeAttribute("selected");
   }
   for(let i = 0; i<nizPonuda.length;i++)
   {
