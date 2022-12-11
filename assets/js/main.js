@@ -1,4 +1,34 @@
 console.log("Provera");
+//promena boje nav elemenata na scroll - O Nama:2000, U Ponudi:3000, Kontakt:4000, O autoru: 4900
+$(window).scroll(function() {    
+  var scroll = $(window).scrollTop();
+
+  if(scroll <2000){
+    $("#pocetna").addClass("navbar-scroll");
+  }else{
+    $("#pocetna").removeClass("navbar-scroll");
+  }
+  if(scroll >= 2000 && scroll < 3000){
+    $("#o-nama").addClass("navbar-scroll");
+  }else{
+    $("#o-nama").removeClass("navbar-scroll");
+  }
+  if(scroll >= 3000 && scroll < 4000){
+    $("#u-ponudi").addClass("navbar-scroll");
+  }else{
+    $("#u-ponudi").removeClass("navbar-scroll");
+  }
+  if(scroll >= 4000 && scroll < 4900){
+    $("#kontakt").addClass("navbar-scroll");
+  }else{
+    $("#kontakt").removeClass("navbar-scroll");
+  }
+  if(scroll >= 4900){
+    $("#o-autoru").addClass("navbar-scroll");
+  }else{
+    $("#o-autoru").removeClass("navbar-scroll");
+  }
+});
 //#region Forma - provera
 function provera(){
   var brojGresaka = 0;
@@ -26,11 +56,13 @@ function provera(){
   var ponuda = document.querySelector("#ponuda");
   var pPonuda = document.querySelector("#pPonuda");
 
+  var kolicina = document.querySelector("#kolicina");
+  var pKolicina = document.querySelector("#pKolicina");
+
   var nacinPreuzimanja=document.getElementsByName("nacinPreuzimanja");
   var pPreuzimanje = document.querySelector("#pPreuzimanje");
 
   var novaPonuda = document.querySelector("#novaPonuda");
-  var valNovaPonuda = novaPonuda.val;
   //Provera imena i prezimena
   let regImePrezime=/^[A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15}(\s[A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15})+$/;
   if(!(regImePrezime.test(valImePrezime))){
@@ -75,13 +107,22 @@ function provera(){
   else{
     pTelefon.setAttribute("class","d-none");
   }
-  //Provera padajuce liste
+  //Provera padajuce liste ponuda
   if(ponuda.options[ponuda.options.selectedIndex].value=="0"){
     pPonuda.removeAttribute("class");
     brojGresaka++;
   }
   else{
     pPonuda.setAttribute("class","d-none");
+  }
+  //Provera padajuce liste kolicina
+  var izabraniInd = kolicina.options.selectedIndex
+  if(kolicina.options[izabraniInd].value=="0"){
+    pKolicina.removeAttribute("class");
+    brojGresaka++;
+  }
+  else{
+    pKolicina.setAttribute("class","d-none");
   }
   //Provera radio button-a
   var vrNacinPreuzimanja="";
@@ -111,12 +152,13 @@ function provera(){
 //#region Meni
 let neuredjenaLista = document.querySelector("#neuredjenaLista");
 let nazivOblasti = ["Početna","O nama","U ponudi","Kontakt","O autoru"];
+let idOblasti = ["pocetna","o-nama","u-ponudi","kontakt","o-autoru"];
 let linkKaOblasti = ["#","#o-nama","#u-ponudi","#kontakt","#o-autoru"];
 var ispisNL = "";
 for(let i=0; i<nazivOblasti.length; i++)
 {
   ispisNL += `<li class="nav-item">
-                    <a class="nav-link" href="${linkKaOblasti[i]}">${nazivOblasti[i]}</a>
+                    <a id="${idOblasti[i]}" class="nav-link" href="${linkKaOblasti[i]}">${nazivOblasti[i]}</a>
               </li>`;
 }
 neuredjenaLista.innerHTML = ispisNL;
@@ -223,7 +265,6 @@ vizijaDesc.innerHTML = ispisVizijaTekst;
 
 //#region U ponudi
 var uPonudiPecivaSvojstva = document.querySelector("#uPonudiSvojstva");
-//OBAVEZNO DODATI DINAMICKU DROPDOWN LISTU ZA GRAMAZU I PARCICE
 var pecivaPonuda = ["Krofne","Mini-pice","Kiflice sa viršlama","Hleb"];
 var cenaPeciva = ["30 RSD/kom","80 RSD/100 gr.","100 RSD/100 gr.","40 RSD/kom"];
 var pecivaId = ["kr","mi","ki","hl"];
@@ -294,15 +335,86 @@ var opcije = ["kr","mi","ki","hl","ma","ca","qu","ve"];
 var opcijeTekst = ["Krofne","Mini-pice","Kiflice sa viršlama","Hleb","Margarita","Capriciosa","Quattro Stagioni","Vegeteriana"];
 var ispisIzbor = `<div id="izbor" class="col-12 px-2">
                     <label for="ponuda">Odaberite proizvod:</label>
-                    <select id="ponuda" class="form-control">
+                    <select id="ponuda" class="form-control" onchange="konfDdl(this,document.getElementById('kolicina'))">
                       <option value="0">Izaberite...</option>`;
 for(i=0; i<opcije.length;i++){
   ispisIzbor += `<option id="${opcije[i]}" value="${opcije[i]}">${opcijeTekst[i]}</option>`;
 }
 ispisIzbor += `</select>
-            <p id="pPonuda" class="vv-white14 d-none">Morate izabrati neki od proizvoda.</p>
+            <p id="pPonuda" class="d-none">Morate izabrati neki od proizvoda.</p>
           </div>`;
 kontaktForma.innerHTML += ispisIzbor;
+
+var ispisKolicina = `<div id="ddlKolicina" class="col-12 px-2 pt-2 d-none">
+                      <label for="kolicina">Odaberite količinu:</label>
+                      <select id="kolicina" class="form-control">
+                        <option value="0"> Izaberite...</option>
+                      </select>
+                      <p id="pKolicina" class="d-none">Morate izabrati količinu.</p>
+                    </div>`;
+kontaktForma.innerHTML += ispisKolicina;
+
+function konfDdl(ddl1, ddl2){
+  var divKolicina = document.querySelector("#ddlKolicina");
+  var ddlKomad = [];
+  for(let i=1;i<=10;i++){
+    if(i==1){
+      ddlKomad.push(i + " komad");
+    }else{
+      ddlKomad.push(i + " komada");
+    }
+  }
+  var ddlParce = [];
+  for(let i=1;i<=10;i++){
+    if(i==1){
+      ddlParce.push(i + " parče");
+    }else{
+      ddlParce.push(i + " parčeta");
+    }
+  }
+  var ddlGrami = [];
+  for(let i=100;i<=1500;i+=50){
+    if(i<1000){
+      ddlGrami.push(i + " g");
+    }else{
+      ddlGrami.push(i/1000 + " kg");
+    }
+  }
+
+  if(ddl1.value == "0"){
+    divKolicina.classList.add("d-none");
+  }else{
+    divKolicina.classList.remove("d-none");
+    switch(ddl1.value){
+      case "kr": case "hl":
+        ddl2.options.length = 1;
+        for(let i in ddlKomad){
+          kreirajOpciju(ddl2, ddlKomad[i], ddlKomad[i]);
+        }
+        break;
+      case "ma": case "ca": case "qu": case "ve":
+        ddl2.options.length = 1;
+        for(let i in ddlParce){
+          kreirajOpciju(ddl2, ddlParce[i], ddlParce[i]);
+        }
+        break;
+      case "mi": case "ki":
+        ddl2.options.length = 1;
+        for(let i in ddlGrami){
+          kreirajOpciju(ddl2, ddlGrami[i], ddlParce[i]);
+        }
+        break;
+    }  
+  }
+}
+function kreirajOpciju(ddl, tekst, val) {
+  var opcija = document.createElement("option");
+  opcija.value = val;
+  opcija.text = tekst;
+  ddl.appendChild(opcija);
+}
+//onchange="konfDdl(this,document.getElementById('kolicina'))
+
 
 var preuzimanjaId = ["licno","dostava"];
 var preuzimanjaValue = ["L","D"];

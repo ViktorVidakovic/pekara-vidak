@@ -74,6 +74,9 @@ a,p,.vv-welcome, #desc-block p,h2,h3{
     transition-duration:.7s;
     text-shadow: 0px 0px 50px var(--drop-shadow);
 }
+.navbar-scroll{
+    color:var(--navbar-a-active) !important;
+}
 .active a{
     color:var(--navbar-a-active) !important;
 }
