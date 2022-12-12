@@ -508,7 +508,7 @@ footerInfoUl.innerHTML = ispisInfoFooter;
 var footerSocialUl = document.querySelector("#footerSocialUl");
 var footerSocialIKlase = ["instagram","facebook-square","youtube"];
 var footerSocialPTekstovi = ["pekara_vidak","Pekar Vidak","Pekara Vidak"];
-var footerSocialAHref = ["https:/www.instagram.com/pekara_vidak/","https:/www.facebook.com/channel/PekaraVidak/","https:/www.youtube.com/@pekara_vidak"];
+var footerSocialAHref = ["www.instagram.com/pekara_vidak/","www.facebook.com/channel/PekaraVidak/","www.youtube.com/@PekaraVidak"];
 var ispisSocialFooter = "";
 for(let i=0;i<footerSocialPTekstovi.length;i++){
   ispisSocialFooter += `<li class="nav-item mt-2 h-47">
