@@ -1,32 +1,32 @@
 console.log("Provera");
-//promena boje nav elemenata na scroll - O Nama:2000, U Ponudi:3000, Kontakt:4000, O autoru: 4900
+//Promena boje nav elemenata na scroll
 $(window).scroll(function() {    
   var scroll = $(window).scrollTop();
 
   if(scroll <2000){
-    $("#pocetna").addClass("navbar-scroll");
+    $("#pocetna-nav").addClass("navbar-scroll");
   }else{
-    $("#pocetna").removeClass("navbar-scroll");
+    $("#pocetna-nav").removeClass("navbar-scroll");
   }
   if(scroll >= 2000 && scroll < 3000){
-    $("#o-nama").addClass("navbar-scroll");
+    $("#o-nama-nav").addClass("navbar-scroll");
   }else{
-    $("#o-nama").removeClass("navbar-scroll");
+    $("#o-nama-nav").removeClass("navbar-scroll");
   }
   if(scroll >= 3000 && scroll < 4000){
-    $("#u-ponudi").addClass("navbar-scroll");
+    $("#u-ponudi-nav").addClass("navbar-scroll");
   }else{
-    $("#u-ponudi").removeClass("navbar-scroll");
+    $("#u-ponudi-nav").removeClass("navbar-scroll");
   }
   if(scroll >= 4000 && scroll < 4900){
-    $("#kontakt").addClass("navbar-scroll");
+    $("#kontakt-nav").addClass("navbar-scroll");
   }else{
-    $("#kontakt").removeClass("navbar-scroll");
+    $("#kontakt-nav").removeClass("navbar-scroll");
   }
   if(scroll >= 4900){
-    $("#o-autoru").addClass("navbar-scroll");
+    $("#o-autoru-nav").addClass("navbar-scroll");
   }else{
-    $("#o-autoru").removeClass("navbar-scroll");
+    $("#o-autoru-nav").removeClass("navbar-scroll");
   }
 });
 //#region Forma - provera
@@ -65,7 +65,7 @@ function provera(){
   var novaPonuda = document.querySelector("#novaPonuda");
   //Provera imena i prezimena
   let regImePrezime=/^[A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15}(\s[A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15})+$/;
-  if(!(regImePrezime.test(valImePrezime))){
+  if(!(regImePrezime.test(valImePrezime.trim()))){
     pImePrezime.removeAttribute("class");
     brojGresaka++;
   }else{
@@ -73,7 +73,7 @@ function provera(){
   }
   //Provera adrese
   let regAdresa=/^([A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15}\s)+[0-9]{1,4}$/;
-  if(!(regAdresa.test(valAdresa))){
+  if(!(regAdresa.test(valAdresa.trim()))){
     pAdresa.removeAttribute("class");
     brojGresaka++;
   }
@@ -82,7 +82,7 @@ function provera(){
   }
   //Provera grada
   let regGrad=/^[A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15}(\s[A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15})*$/;
-  if(!(regGrad.test(valGrad))){
+  if(!(regGrad.test(valGrad.trim()))){
     pGrad.removeAttribute("class");
     brojGresaka++;
   }
@@ -91,7 +91,7 @@ function provera(){
   }
   //Provera postanskog broja
   let regPosBroj=/^[0-9]{5}$/;
-  if(!(regPosBroj.test(valPosBroj))){
+  if(!(regPosBroj.test(valPosBroj.trim()))){
     pPosBroj.removeAttribute("class");
     brojGresaka++;
   }
@@ -99,8 +99,8 @@ function provera(){
     pPosBroj.setAttribute("class","d-none");
   }
   //Provera broja telefona
-  let regTelefon=/^\d{9,10}$/;
-  if(!(regTelefon.test(valTelefon))){
+  let regTelefon=/^06\d{7,8}$/;
+  if(!(regTelefon.test(valTelefon.trim()))){
     pTelefon.removeAttribute("class");
     brojGresaka++;
   }
@@ -141,10 +141,10 @@ function provera(){
   }
   var alertIspis = "";
   if(novaPonuda.checked){
-    alertIspis = "Hvala Vam što ste se prijavili na naš newsletter!";
+    alertIspis = "Hvala na prijavi! Od sada će Vam stizati obaveštenja na Vašem mobilnom uređaju u vidu poruke.";
   }
   if(brojGresaka==0){
-    alert("Uspešno ste izvršili porudžbinu.\n" + `${alertIspis}`);
+    alert("Uspešno ste izvršili porudžbinu.\n\n" + `${alertIspis}`);
   }
 }
 //#endregion
@@ -152,7 +152,7 @@ function provera(){
 //#region Meni
 let neuredjenaLista = document.querySelector("#neuredjenaLista");
 let nazivOblasti = ["Početna","O nama","U ponudi","Kontakt","O autoru"];
-let idOblasti = ["pocetna","o-nama","u-ponudi","kontakt","o-autoru"];
+let idOblasti = ["pocetna-nav","o-nama-nav","u-ponudi-nav","kontakt-nav","o-autoru-nav"];
 let linkKaOblasti = ["#","#o-nama","#u-ponudi","#kontakt","#o-autoru"];
 var ispisNL = "";
 for(let i=0; i<nazivOblasti.length; i++)
@@ -279,7 +279,7 @@ for(let i=0;i<pecivaPonuda.length;i++)
                             <div class="d-flex align-items-center price row mx-0">
 
                               <button type="button" disabled class="vv-fw-700 ponuda-fs btn-lg vv-br-0 col-sm-8 col-12 text-center px-0 mr-0 tx-b">${cenaPeciva[i]}</button>
-                              <button type="button" class="btn-secondary vv-br-0 btn-lg col-sm-4 col-12 text-uppercase text-center px-0 mr-0 btn-bg" onclick="window.location.href='#kontakt',poruci('${pecivaId[i]}')">Poruči</button>
+                              <button type="button" class="btn-secondary vv-br-0 btn-lg col-sm-4 col-12 text-uppercase text-center px-0 mr-0 btn-bg" onclick="window.location='#kontakt',poruci('${pecivaId[i]}'),konfDdl(getElementById('ponuda'),getElementById('kolicina'))">Poruči</button>
                             </div>
                           </div>
                         </section>
@@ -293,7 +293,8 @@ var cenaPizza = ["100 RSD/parče","120 RSD/parče","140 RSD/parče","150 RSD/par
 var pizzeId = ["ma","ca","qu","ve"];
 
 var ispisPonudaPizza = "";
-
+var ponuda = document.querySelector("#ponuda");
+var kolicina = document.querySelector("#kolicina");
 for(let i=0;i<pecivaPonuda.length;i++)
 {
   ispisPonudaPizza += `<article class="col-12 col-md-6 col-xl-3 mb-xl-0 mb-3">
@@ -303,11 +304,11 @@ for(let i=0;i<pecivaPonuda.length;i++)
                           <div class="ponuda-btn">
                             <div class="d-flex align-items-center price row mx-0">
                               <button type="button" disabled class="vv-fw-700 ponuda-fs btn-lg vv-br-0 col-sm-8 col-12 text-center px-0 mr-0 tx-b">${cenaPizza[i]}</button>
-                              <button type="button" class="btn-secondary vv-br-0 btn-lg col-sm-4 col-12 text-uppercase text-center px-0 mr-0 btn-bg" onclick="window.location.href='#kontakt',poruci('${pizzeId[i]}')">Poruči</button>
+                              <button type="button" class="btn-secondary vv-br-0 btn-lg col-sm-4 col-12 text-uppercase text-center px-0 mr-0 btn-bg" onclick="window.location='#kontakt',poruci('${pizzeId[i]}'),konfDdl(getElementById('ponuda'),getElementById('kolicina'))">Poruči</button>
                             </div>
                           </div>
                         </section>
-                      </article>`; 
+                      </article>`;
 }
 uPonudiPizzaSvojstva.innerHTML = ispisPonudaPizza;
 //#endregion
@@ -335,7 +336,7 @@ var opcije = ["kr","mi","ki","hl","ma","ca","qu","ve"];
 var opcijeTekst = ["Krofne","Mini-pice","Kiflice sa viršlama","Hleb","Margarita","Capriciosa","Quattro Stagioni","Vegeteriana"];
 var ispisIzbor = `<div id="izbor" class="col-12 px-2">
                     <label for="ponuda">Odaberite proizvod:</label>
-                    <select id="ponuda" class="form-control" onchange="konfDdl(this,document.getElementById('kolicina'))">
+                    <select id="ponuda" class="form-control" onchange="konfDdl(ponuda,kolicina)">
                       <option value="0">Izaberite...</option>`;
 for(i=0; i<opcije.length;i++){
   ispisIzbor += `<option id="${opcije[i]}" value="${opcije[i]}">${opcijeTekst[i]}</option>`;
@@ -413,8 +414,6 @@ function kreirajOpciju(ddl, tekst, val) {
   opcija.text = tekst;
   ddl.appendChild(opcija);
 }
-//onchange="konfDdl(this,document.getElementById('kolicina'))
-
 
 var preuzimanjaId = ["licno","dostava"];
 var preuzimanjaValue = ["L","D"];
@@ -521,31 +520,20 @@ footerSocialUl.innerHTML = ispisSocialFooter;
 //#endregion
 
 //#region Dropdown - Poruci dugme
-var kr = document.getElementById("kr");
-var mi = document.getElementById("mi");
-var ki = document.getElementById("ki");
-var hl = document.getElementById("hl");
-var ma = document.getElementById("ma");
-var ca = document.getElementById("ca");
-var qu = document.getElementById("qu");
-var ve = document.getElementById("ve");
 var nizPonuda = ["kr","mi","ki","hl","ma","ca","qu","ve"];
 function poruci(string){
   for(let i = 0; i<nizPonuda.length;i++){
-    let poruciProizvod = document.getElementById(`${nizPonuda[i]}`);
-    poruciProizvod.removeAttribute("selected");
+    let brisiSelectedAttr = document.getElementById(`${nizPonuda[i]}`);
+    brisiSelectedAttr.removeAttribute("selected");
   }
-  for(let i = 0; i<nizPonuda.length;i++)
-  {
-    let poruciProizvod = document.getElementById(string);
-    if(poruciProizvod == kr)return poruciProizvod.setAttribute("selected", "");
-    else if(poruciProizvod == mi)return poruciProizvod.setAttribute("selected", "");
-    else if(poruciProizvod == ki)return poruciProizvod.setAttribute("selected", "");
-    else if(poruciProizvod == hl)return poruciProizvod.setAttribute("selected", "");
-    else if(poruciProizvod == ma)return poruciProizvod.setAttribute("selected", "");
-    else if(poruciProizvod == ca)return poruciProizvod.setAttribute("selected", "");
-    else if(poruciProizvod == qu)return poruciProizvod.setAttribute("selected", "");
-    else if(poruciProizvod == ve)return poruciProizvod.setAttribute("selected", "");
-  }
+  var poruciProizvod = document.getElementById(string);
+  if(string == "kr")return poruciProizvod.setAttribute("selected", "");
+  else if(string == "mi")return poruciProizvod.setAttribute("selected", "");
+  else if(string == "ki")return poruciProizvod.setAttribute("selected", "");
+  else if(string == "hl")return poruciProizvod.setAttribute("selected", "");
+  else if(string == "ma")return poruciProizvod.setAttribute("selected", "");
+  else if(string == "ca")return poruciProizvod.setAttribute("selected", "");
+  else if(string == "qu")return poruciProizvod.setAttribute("selected", "");
+  else if(string == "ve")return poruciProizvod.setAttribute("selected", "");
 }
 //#endregion
