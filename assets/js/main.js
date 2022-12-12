@@ -36,22 +36,27 @@ function provera(){
   var imePrezime = document.querySelector("#imePrezime");
   var valImePrezime = imePrezime.value;
   var pImePrezime = document.querySelector("#pImePrezime");
+  var pImePrezimePrazno = document.querySelector("#pImePrezimePrazno");
 
   var adresa = document.querySelector("#adresa");
   var valAdresa = adresa.value;
   var pAdresa = document.querySelector("#pAdresa");
+  var pAdresaPrazno = document.querySelector("#pAdresaPrazno");
 
   var grad = document.querySelector("#grad");
   var valGrad = grad.value;
   var pGrad = document.querySelector("#pGrad");
+  var pGradPrazno = document.querySelector("#pGradPrazno");
 
   var posBroj = document.querySelector("#posBroj");
   var valPosBroj = posBroj.value;
   var pPosBroj = document.querySelector("#pPosBroj");
+  var pPosBrojPrazno = document.querySelector("#pPosBrojPrazno");
 
   var telefon = document.querySelector("#telefon");
   var valTelefon = telefon.value;
   var pTelefon = document.querySelector("#pTelefon");
+  var pTelefonPrazno = document.querySelector("#pTelefonPrazno");
 
   var ponuda = document.querySelector("#ponuda");
   var pPonuda = document.querySelector("#pPonuda");
@@ -65,47 +70,78 @@ function provera(){
   var novaPonuda = document.querySelector("#novaPonuda");
   //Provera imena i prezimena
   let regImePrezime=/^[A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15}(\s[A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15})+$/;
-  if(!(regImePrezime.test(valImePrezime.trim()))){
-    pImePrezime.removeAttribute("class");
-    brojGresaka++;
-  }else{
+  if(valImePrezime != ""){
+    pImePrezimePrazno.setAttribute("class","d-none");
+    if(!(regImePrezime.test(valImePrezime.trim()))){
+      pImePrezime.removeAttribute("class");
+      brojGresaka++;
+    }else{
+      pImePrezime.setAttribute("class","d-none");
+    }
+  }
+  else{
     pImePrezime.setAttribute("class","d-none");
+    pImePrezimePrazno.removeAttribute("class");
   }
   //Provera adrese
   let regAdresa=/^([A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15}\s)+[0-9]{1,4}$/;
-  if(!(regAdresa.test(valAdresa.trim()))){
-    pAdresa.removeAttribute("class");
-    brojGresaka++;
-  }
-  else{
+  if(valAdresa != ""){
+    pAdresaPrazno.setAttribute("class","d-none");
+    if(!(regAdresa.test(valAdresa.trim()))){
+      pAdresa.removeAttribute("class");
+      brojGresaka++;
+    }
+    else{
+      pAdresa.setAttribute("class","d-none");
+    }
+  }else{
     pAdresa.setAttribute("class","d-none");
+    pAdresaPrazno.removeAttribute("class");
   }
   //Provera grada
   let regGrad=/^[A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15}(\s[A-ZČĆŠĐŽ]{1}[a-zčćšđž]{2,15})*$/;
-  if(!(regGrad.test(valGrad.trim()))){
-    pGrad.removeAttribute("class");
-    brojGresaka++;
-  }
-  else{
+  if(valGrad != ""){
+    pGradPrazno.setAttribute("class","d-none");
+    if(!(regGrad.test(valGrad.trim()))){
+      pGrad.removeAttribute("class");
+      brojGresaka++;
+    }
+    else{
+      pGrad.setAttribute("class","d-none");
+    }
+  }else{
     pGrad.setAttribute("class","d-none");
+    pGradPrazno.removeAttribute("class");
   }
   //Provera postanskog broja
   let regPosBroj=/^[0-9]{5}$/;
-  if(!(regPosBroj.test(valPosBroj.trim()))){
-    pPosBroj.removeAttribute("class");
-    brojGresaka++;
-  }
-  else{
+  if(valPosBroj != ""){
+    pPosBrojPrazno.setAttribute("class","d-none");
+    if(!(regPosBroj.test(valPosBroj.trim()))){
+      pPosBroj.removeAttribute("class");
+      brojGresaka++;
+    }
+    else{
+      pPosBroj.setAttribute("class","d-none");
+    }
+  }else{
     pPosBroj.setAttribute("class","d-none");
+    pPosBrojPrazno.removeAttribute("class");
   }
   //Provera broja telefona
   let regTelefon=/^06\d{7,8}$/;
-  if(!(regTelefon.test(valTelefon.trim()))){
-    pTelefon.removeAttribute("class");
-    brojGresaka++;
-  }
-  else{
+  if(valTelefon != ""){
+    pTelefonPrazno.setAttribute("class","d-none");
+    if(!(regTelefon.test(valTelefon.trim()))){
+      pTelefon.removeAttribute("class");
+      brojGresaka++;
+    }
+    else{
+      pTelefon.setAttribute("class","d-none");
+    }
+  }else{
     pTelefon.setAttribute("class","d-none");
+    pTelefonPrazno.removeAttribute("class");
   }
   //Provera padajuce liste ponuda
   if(ponuda.options[ponuda.options.selectedIndex].value=="0"){
@@ -139,12 +175,14 @@ function provera(){
   else{
     pPreuzimanje.setAttribute("class","d-none");
   }
-  var alertIspis = "";
+  var prijavaIspis = "";
   if(novaPonuda.checked){
-    alertIspis = "Hvala na prijavi! Od sada će Vam stizati obaveštenja na Vašem mobilnom uređaju u vidu poruke.";
+    prijavaIspis = "Hvala na prijavi! Od sada će Vam stizati obaveštenja na Vašem mobilnom uređaju u vidu poruke.";
   }
   if(brojGresaka==0){
-    alert("Uspešno ste izvršili porudžbinu.\n\n" + `${alertIspis}`);
+    var uspesno = document.querySelector("#uspesno");
+    uspesno.innerHTML = `<b class="text-success">Uspešno ste izvršili porudžbinu.\n\n ${prijavaIspis}</b>`;
+    uspesno.classList.remove("d-none");
   }
 }
 //#endregion
@@ -164,14 +202,14 @@ for(let i=0; i<nazivOblasti.length; i++)
 neuredjenaLista.innerHTML = ispisNL;
 //#endregion
 
-//#region Kreiranje slider-a u HTML-u
+//#region Slider
 var slajder = document.querySelector("#carousel");
 var pozicijaSlike = ["prva","druga","treca","cetvrta"];
 var slikaSlajd = ["assets/img/slider1.png","assets/img/slider2.png","assets/img/slider3.png", "assets/img/slider4.png"];
 var ispisCarousel = "";
 for(let i=0;i<slikaSlajd.length;i++)
 {
-  ispisCarousel += `<img src="${slikaSlajd[i]}" alt="Ovo je ${pozicijaSlike} slika u okviru slajdera." class="col-12 px-0"/>`;
+  ispisCarousel += `<img src="${slikaSlajd[i]}" class="img-fluid" alt="Ovo je ${pozicijaSlike} slika u okviru slajdera." class="col-12 px-0"/>`;
 }
 slajder.innerHTML = ispisCarousel;
 //Upotrebljen je plugin slick
@@ -190,9 +228,9 @@ $(document).ready(function(){
 
 //#region Podrucje rada
 var podrucjeRadaBlokoviTekst = [
-  "<p class='vv-ta-left vv-fs-26 vv-crna-slova'>U ponudi imamo različite vrste hlebova, mini pica, kiflica po kojima smo poznati, krofne, kao i druge pekarske proizvode i peciva. Kompletnu ponudu peciva možete da vidite <a class='vv-narandzasta-slova vv-fw-700' href='#u-ponudi-peciva'>ovde</a>.</p>",
+  "U ponudi imamo različite vrste hlebova, mini pica, kiflica po kojima smo poznati, krofne, kao i druge pekarske proizvode i peciva. Kompletnu ponudu peciva možete da vidite <a class='vv-narandzasta-slova vv-fw-700' href='#u-ponudi-peciva'>ovde</a>.",
   
-  "<p class='vv-ta-left vv-fs-26 vv-crna-slova'>U ponudi imamo nekoliko vrsta pica. Neke od njih su kaprićoza, gurmanska i vulkan za najveće ljubitelje ovog italijanskog specijaliteta. Kompletnu ponudu možete da vidite <a class='vv-narandzasta-slova vv-fw-700' href='#u-ponudi-pice'>ovde</a>.</p>"];
+  "U ponudi imamo nekoliko vrsta pica. Neke od njih su kaprićoza, gurmanska i vulkan za najveće ljubitelje ovog italijanskog specijaliteta. Kompletnu ponudu možete da vidite <a class='vv-narandzasta-slova vv-fw-700' href='#u-ponudi-pice'>ovde</a>."];
 var podrucjeRadaFontAwesome = ["bread","pizza"];
 var podrucjeRadaDescId = ["bread", "pizza"];
 
@@ -320,14 +358,25 @@ var formaIdIAGP = ["imePrezime","adresa","grad","posBroj","telefon"];
 var labelTekstIAGP = ["Ime i prezime","Adresa","Grad","Poštanski broj","Broj telefona"];
 var placeholderiIAGP = ["Marko Marković","Zdravka Čelara 16","Beograd","11060", "062323232"];
 var ispisPoljeFormIAGP = "";
-var pIdIAGP = ["pImePrezime","pAdresa","pGrad","pPosBroj","pTelefon"];
-var tekstPoljeIAGP = ["Pogrešno uneto ime i prezime, početno slovo mora biti veliko.","Pogrešno uneta adresa, unesite naziv ulice i broj.","Pogrešno unet grad, početno slovo mora biti veliko.","Pogrešno uneto, poštanski broj mora imati 5 cifara", "Pogrešno unet  broj telefona. Morate uneti 9 ili 10 cifara."];
+var pIdIAGPT = ["pImePrezime","pAdresa","pGrad","pPosBroj","pTelefon"];
+var tekstPoljeIAGPT = ["Pogrešno uneto ime i prezime, početno slovo mora biti veliko.",
+                       "Pogrešno uneta adresa, unesite naziv ulice i broj.",
+                       "Pogrešno unet grad, početno slovo mora biti veliko.",
+                       "Pogrešno uneto, poštanski broj mora imati 5 cifara",
+                       "Pogrešno unet  broj telefona. Morate uneti 9 ili 10 cifara."];
+var pIdIAGPTPrazno = ["pImePrezimePrazno","pAdresaPrazno","pGradPrazno","pPosBrojPrazno","pTelefonPrazno"];
+var tekstPoljeIAGPTPrazno = ["Molimo unesite Vaše ime i prezime.",
+                             "Molimo unesite naziv Vaše ulice i broj.",
+                             "Molimo unesite Vaš grad.",
+                             "Molimo unesite Vaš poštanski broj.",
+                             "Molimo unesite Vaš broj telefona."];
 for(let i=0;i<poljeFormaIdIAGP.length;i++)
 {
   ispisPoljeFormIAGP += `<div id="${poljeFormaIdIAGP[i]}" class="form-group row px-4">
                           <label class="col-12 px-0" for="${formaIdIAGP[i]}">${labelTekstIAGP[i]}:</label>
                           <input id="${formaIdIAGP[i]}" class="col-12 py-1 vv-br-025" type="text" name="${formaIdIAGP[i]}" placeholder="${placeholderiIAGP[i]}">
-                          <p id="${pIdIAGP[i]}" class="d-none">${tekstPoljeIAGP[i]}<p/>
+                          <p id="${pIdIAGPT[i]}" class="d-none">${tekstPoljeIAGPT[i]}</p>
+                          <p id="${pIdIAGPTPrazno[i]}" class="d-none">${tekstPoljeIAGPTPrazno[i]}</p>
                         </div>`;
 }
 kontaktForma.innerHTML = ispisPoljeFormIAGP;
@@ -439,6 +488,9 @@ var ispisNovaPonuda = `<div class="form-group row px-0">
                           <label class="form-check-label" for="novaPonuda">Želim da budem obavešten o novim proizvodima i akcijama.</label>
                         </div>
                       </div>
+                      <div id="uspesno" class="d-none col-12 px-4 py-2 mb-3">
+                        
+                      </div>
                       <div class="form-group d-flex justify-content-center">
                         <input id="btnPosalji" class="btn vv-br-025 vv-btn-grey" type="button" value="Pošalji"/>
                       </div>`;
@@ -521,7 +573,7 @@ for(let i=0;i<footerSocialPTekstovi.length;i++){
 footerSocialUl.innerHTML = ispisSocialFooter;
 //#endregion
 
-//#region Dropdown - Poruci dugme
+//#region Funkcija - Poruči dugme
 var nizPonuda = ["kr","mi","ki","hl","ma","ca","qu","ve"];
 function poruci(string){
   for(let i = 0; i<nizPonuda.length;i++){
